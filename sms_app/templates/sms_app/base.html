@@ -1,0 +1,60 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}SMS Sender{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'sms_app/style.css' %}">
+</head>
+<body>
+
+    <header class="topbar">
+        <a href="{% url 'sms_app:send' %}" class="brand">
+            SMS Sender
+        </a>
+
+        <nav>
+            <a href="{% url 'sms_app:send' %}"
+               {% if request.resolver_match.url_name == 'send' %}
+               aria-current="page"
+               {% endif %}>
+                Send SMS
+            </a>
+
+            <a href="{% url 'sms_app:history' %}"
+               {% if request.resolver_match.url_name == 'history' %}
+               aria-current="page"
+               {% endif %}>
+                History
+            </a>
+        </nav>
+    </header>
+
+    <main class="page">
+
+        {% if messages %}
+            <div class="flash-stack">
+                {% for message in messages %}
+                    <div class="flash flash-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+    <footer class="footer">
+        IT 120 Group Project · Django + TextBee.
+        Use only authorized test recipients.
+    </footer>
+
+</body>
+</html>

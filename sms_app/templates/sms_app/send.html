@@ -1,0 +1,152 @@
+
+{% extends "sms_app/base.html" %}
+{% block title %}Compose SMS{% endblock %}
+
+{% block content %}
+
+<div class="page-header compose-header">
+    <div>
+        <span class="dashboard-eyebrow">SMS MESSAGING</span>
+        <h1>Send SMS</h1>
+        <p class="lede">Compose and send a message to your recipient.</p>
+    </div>
+</div>
+
+<div class="compose">
+
+    <!-- COMPOSE FORM -->
+    <section class="panel compose-panel">
+
+        <div class="panel-heading">
+            <h2>Compose Message</h2>
+            <p class="raw-status">Enter the recipient and your message below.</p>
+        </div>
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+
+            <div class="field {% if form.recipient.errors %}has-error{% endif %}">
+                <label for="{{ form.recipient.id_for_label }}">
+                    {{ form.recipient.label }}
+                </label>
+
+                {{ form.recipient }}
+
+                <small>Use +639171234567 or 09171234567.</small>
+
+                {% for error in form.recipient.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="field {% if form.message.errors %}has-error{% endif %}">
+                <label for="{{ form.message.id_for_label }}">
+                    {{ form.message.label }}
+                </label>
+
+                {{ form.message }}
+
+                <div class="counter-row">
+                    <span id="counter" aria-live="polite">
+                        0 / 480 characters &middot; 0 SMS
+                    </span>
+                </div>
+
+                {% for error in form.message.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <button type="submit" class="btn send-btn">
+                Send SMS
+            </button>
+        </form>
+
+    </section>
+
+    <!-- PREVIEW PANEL -->
+    <aside class="panel preview-panel" aria-label="Message preview">
+
+        <div class="panel-heading">
+            <h2>Live Preview</h2>
+            <p class="raw-status">Preview how your message will appear.</p>
+        </div>
+
+        <div class="phone">
+
+            <div class="phone-header">
+                <div class="phone-avatar">SMS</div>
+                <div class="phone-contact">
+                    <strong>Message Preview</strong>
+                    <small>Text message</small>
+                </div>
+            </div>
+
+            <p class="phone-to">
+                To: <span id="preview-to">&mdash;</span>
+            </p>
+
+            <div class="bubble" id="preview-body">
+                Your message will appear here.
+            </div>
+
+            <div class="phone-time">SMS Preview</div>
+
+        </div>
+
+        {% if recent %}
+
+            <div class="recent-block">
+                <h2 class="recent-title">Latest Attempts</h2>
+
+                <ul class="recent">
+                    {% for sms in recent %}
+                        <li>
+                            <span class="pill pill-{{ sms.stage }}">
+                                {{ sms.stage|title }}
+                            </span>
+                            <span class="recent-number">
+                                {{ sms.masked_recipient }}
+                            </span>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <a href="{% url 'sms_app:history' %}" class="history-link">
+                    See full history →
+                </a>
+            </div>
+
+        {% endif %}
+
+    </aside>
+
+</div>
+
+<script>
+  (function () {
+    var to = document.getElementById("{{ form.recipient.id_for_label }}");
+    var msg = document.getElementById("{{ form.message.id_for_label }}");
+    var counter = document.getElementById("counter");
+    var pTo = document.getElementById("preview-to");
+    var pBody = document.getElementById("preview-body");
+    var MAX = {{ form.message.field.max_length }};
+
+    function update() {
+      var len = msg.value.length;
+      var segments = len === 0 ? 0 : Math.ceil(len / 160);
+
+      counter.textContent = len + " / " + MAX + " characters \u00b7 " + segments + " SMS";
+      counter.classList.toggle("near-limit", len > MAX - 40);
+
+      pTo.textContent = to.value.trim() || "\u2014";
+      pBody.textContent = msg.value.trim() || "Your message will appear here.";
+    }
+
+    to.addEventListener("input", update);
+    msg.addEventListener("input", update);
+    update();
+  })();
+</script>
+
+{% endblock %}

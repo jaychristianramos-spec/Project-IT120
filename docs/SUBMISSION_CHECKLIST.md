@@ -1,0 +1,11 @@
+# Final checklist
+- [ ] `python manage.py runserver` works on a fresh clone (venv + `pip install -r requirements.txt` + `.env`)
+- [ ] `python manage.py test` passes
+- [ ] Manual test table in README filled in with YOUR results
+- [ ] Member names and roles filled in README
+- [ ] No `.env`, API keys or tokens in the repo (check GitHub, including old commits)
+- [ ] Repo is public or the instructor has access
+- [ ] Each member has commits
+- [ ] Video is 3–10 minutes, shows no secrets, link opens without login (check in a private window)
+- [ ] Email subject exactly: `Assignment_IT 120-1stSemSY26-27`
+- [ ] Deadline confirmed with the instructor (document says "to be confirmed"; original: Nov 20, 2026)
