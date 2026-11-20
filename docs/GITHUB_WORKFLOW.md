@@ -1,27 +1,42 @@
-# GitHub workflow for a group of 3 (so commit history shows everyone)
+GitHub Workflow for a Group of 4 (So Commit History Shows Everyone)
+Repository Setup:
 
-1. **One member** creates a repo on GitHub (e.g. `it120-django-sms`), adds the other members and the instructor as collaborators (or makes it public).
-2. Initialize and push:
-   ```bash
-   cd sms_project
-   git init
-   git add .
-   git status            # confirm .env and .venv are NOT listed
-   git commit -m "Initial Django project setup"
-   git branch -M main
-   git remote add origin https://github.com/<user>/<repo>.git
-   git push -u origin main
-   ```
-3. **Each member** clones, creates a branch, commits their own work, and opens a pull request:
-   ```bash
-   git clone https://github.com/<user>/<repo>.git
-   git checkout -b feature/<your-part>
-   git add .
-   git commit -m "Describe what YOU changed"
-   git push -u origin feature/<your-part>
-   ```
-4. Suggested split of commits so each member has real work to show:
-   - **Member 1:** project settings, URLs, views, model + migration.
-   - **Member 2:** `forms.py`, templates, CSS, counter/preview JavaScript.
-   - **Member 3:** `services.py` (Twilio), `tests.py`, README test table, demo video.
-5. Make small, meaningful commits (not one giant upload). Before the final push, double check no secrets were ever committed. If a key was committed by accident, **rotate it in the Twilio Console** (deleting the file is not enough).
+Jay Christian Ramos created the repository ([https://github.com/jaychristianramos-spec/Project-IT120](https://github.com/jaychristianramos-spec/Project-IT120)), added all group members as collaborators, and set the repository to Public so the instructor (prala-an@carsu.edu.ph) can inspect the code and commit history.
+
+Initialize and Push the Base Project:
+
+Bash
+cd Project-IT120
+git init
+git add .
+git status            # confirm .env and venv/ are NOT listed
+git commit -m "Initial Django project setup"
+git branch -M main
+git remote add origin https://github.com/jaychristianramos-spec/Project-IT120.git
+git push -u origin main
+Each Member Clones, Creates a Branch, Commits Their Work, and Opens a Pull Request:
+
+Bash
+git clone https://github.com/jaychristianramos-spec/Project-IT120.git
+cd Project-IT120
+git checkout -b feature/<your-part>
+git add .
+git commit -m "Describe what YOU changed"
+git push -u origin feature/<your-part>
+(After pushing, open a Pull Request on GitHub and merge into main.)
+
+Task & Commit Split Across All 4 Group Members:
+
+Jay Christian Ramos: Django project setup (sms_project/settings.py, urls.py), views (views.py), and core application logic (feature/django-setup).
+
+Cobie Brian O. Babor: Custom HTML/CSS user interface (templates/, static/sms_app/style.css), forms.py, phone number normalization, validation, and live character counter/preview (feature/ui-and-validation).
+
+Marc Nini C. Salundaguit: Textbee REST API integration (services.py), environment configuration (.env.example, .gitignore), and sanitized error handling (feature/textbee-integration).
+
+Ronymar Tejano: SMSMessage history and status tracking (models.py), unit tests (tests.py), README.md manual test results table, and demonstration video (feature/history-and-testing).
+
+Security & Commit Hygiene:
+
+Make small, meaningful commits rather than a single giant upload so every contributor appears clearly in the GitHub Insights/Commit history.
+
+Before the final push, double-check that .env and venv/ were never committed. If an API key (TEXTBEE_API_KEY) is ever committed by accident, immediately revoke and regenerate a new key in the Textbee Dashboard (deleting the file alone does not remove it from Git history).
