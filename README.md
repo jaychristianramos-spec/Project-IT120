@@ -11,10 +11,10 @@ A Django web application that lets a user type a recipient phone number and a me
 
 | Member | Responsibility |
 | :--- | :--- |
-| **[Jay Christian Ramos]** | Django project setup, views, URLs, application logic |
-| **[Cobie Brian O. Babor]** | User interface (`HTML/CSS`), forms, phone normalization, validation, video presenter |
-| **[Marc Nini C. Salundaguit]** | Textbee SMS gateway integration (`services.py`), environment security, video presenter |
-| **[Ronymar Tejano]** | History & status tracking (`SMSMessage`), system testing, documentation, demo video recording & presentation |
+| **Jay Christian Ramos** | Django project setup, views, URLs, application logic |
+| **Cobie Brian O. Babor** | User interface (`HTML/CSS`), forms, phone normalization, validation, video presenter |
+| **Marc Nini C. Salundaguit** | Textbee SMS gateway integration (`services.py`), environment security, video presenter |
+| **Ronymar Tejano** | History & status tracking (`SMSMessage`), system testing, documentation, demo video recording & presentation |
 
 
 ---
