@@ -12,6 +12,7 @@ A Django web application that lets a user type a recipient phone number and a me
 | [Member 1 name] | Django project setup, views, URLs, application logic |
 | [Member 2 name] | User interface, forms, validation, user feedback |
 | [Member 3 name] | Twilio integration, testing, documentation, demo video |
+| [Member 4 name] |  |
 
 > Replace the placeholders above. All members reviewed and understand the whole system.
 
