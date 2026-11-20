@@ -1,16 +1,16 @@
 # Demonstration Video Script (target: about 6–7 minutes; allowed: 3–10)
 
-**Before recording:** close the browser tabs showing the Twilio Console and your `.env` file. Do NOT open `.env`, the Twilio dashboard with the Auth Token, or any terminal that prints secrets. Use a verified test number. Record the screen with voice (OBS, Zoom, or Xbox Game Bar).
+**Before recording:** close the browser tabs showing the Textbee Dashboard and your `.env` file. Do NOT open `.env`, the Textbee dashboard with the API Key, or any terminal that prints secrets. Use an authorized test number and keep the paired Android gateway phone active. Record the screen with voice (OBS, Zoom, or Xbox Game Bar).
 
 | Time | Who | What to show / say |
-|---|---|---|
-| 0:00–0:40 | Member 1 | Introduce the group and project: "A Django app that sends SMS through Twilio." State the purpose and users. |
-| 0:40–1:30 | Member 1 | Show the GitHub repo: folder structure, README, requirements.txt, `.gitignore`, `.env.example`. Show the commit history with everyone's commits. Mention that real credentials are not in the repo. |
-| 1:30–2:15 | Member 2 | Open the running app. Walk through the Compose page: phone field, message box, Send SMS button, live character counter, live preview. |
-| 2:15–3:30 | Member 3 | **Successful send:** enter an authorized/verified number and a short message, click Send SMS. Show the green notice and point out it says delivery is *not yet confirmed*. Show the SMS arriving on the phone. |
-| 3:30–4:30 | Member 2 | **Validation tests:** submit an empty number, then an empty message, then an invalid number (`12345`). Show each error message. |
-| 4:30–5:15 | Member 3 | **Error handling:** show one provider/credential error (e.g. an unverified number on a trial account), or run `python manage.py test` and show 25 tests passing. |
-| 5:15–6:00 | Member 3 | Open History: dashboard counts, statuses, click **Refresh status** and show it change to Delivered. |
-| 6:00–7:00 | All | Briefly explain technologies (Django, Twilio SDK, python-dotenv, SQLite), where the code lives (`forms.py` validation, `services.py` Twilio, `views.py` logic), security (env variables, CSRF, no secrets in Git), and **each member's contribution**. |
+| :--- | :--- | :--- |
+| 0:00–0:40 | **Ronymar Tejano** | Introduce the group and project: *"A Django app that sends SMS through Textbee (used as a free alternative to Twilio)."* State the purpose and users, and credit **Jay Christian Ramos** for the Django project setup, views, URLs, and core logic. |
+| 0:40–1:30 | **Ronymar Tejano** | Show the GitHub repo (`Project-IT120`): folder structure, `README.md`, `requirements.txt`, `.gitignore`, `.env.example`. Show the commit history with everyone's commits. Mention that real credentials are not in the repo. |
+| 1:30–2:15 | **Ronymar Tejano** | Open the running app. Walk through the Compose page: phone field, message box, Send SMS button, live character counter, and live preview. |
+| 2:15–3:30 | **Marc Nino C. Salundaguit** | **Successful send:** enter an authorized test number and a short message, click **Send SMS**. Show the green notice and point out it says delivery is *not yet confirmed*. Show the SMS arriving on the phone. |
+| 3:30–4:30 | **Marc Nino C. Salundaguit** | **Validation & error handling:** test empty number, empty message, and invalid number (`12345`), and explain how credential/network errors are safely caught without exposing secrets. |
+| 4:30–5:15 | **Cobie Brian O. Babor** | **Automated tests:** run `python manage.py test` in VS Code and show 25 tests passing (with mocked Textbee requests). |
+| 5:15–6:00 | **Cobie Brian O. Babor** | Open **History**: dashboard counts, masked numbers, statuses, click **Refresh status** and show the updated delivery status. |
+| 6:00–7:00 | **Cobie Brian O. Babor** | Briefly explain technologies (Django, Requests for Textbee REST API, `python-dotenv`, SQLite, HTML/CSS), where the code lives (`forms.py`, `services.py`, `views.py`, `models.py`), security (env variables, CSRF, no secrets in Git), and **all 4 members' contributions** (Jay, Ronymar, Marc Nino, and Cobie). |
 
-**Tips:** rehearse once; keep the phone visible or screen-share its notification; every member should speak so each can show understanding.
+**Tips:** rehearse once; keep the receiving phone visible or screen-share its notification; all presenters should speak clearly to demonstrate full system understanding.
