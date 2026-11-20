@@ -26,5 +26,5 @@
 4. Suggested split of commits so each member has real work to show:
    - **Jay Christian Ramos:** project settings, URLs, views, application logic.
    - **Cobie Brian O. Babor:** `forms.py`, templates, CSS, counter/preview JavaScript.
-   - **Marc Nini C. Salundaguit:** `services.py` (Textbee), `.env.example`, `.gitignore`.
+   - **Marc Nino C. Salundaguit:** `services.py` (Textbee), `.env.example`, `.gitignore`.
    - **Ronymar Tejano:** `models.py` (`SMSMessage` history + status), `tests.py`, README test table, demo video.
